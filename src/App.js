@@ -1,9 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
-import TextBox from "./textbox.js";
-import PostBox from './postbox.js';
+import TextBox from "./components/textbox.js";
+import PostBox from './components/postbox.js';
 import { useEffect, useState } from 'react';
-import PopUp from './popUp';
+import PopUp from './components/popUp.js';
 
 function App() {
   const [loginLabel, setLoginLabel] = useState("Login");
@@ -13,15 +12,15 @@ function App() {
      
   return (
     <div className="grid-container">
-    <header className="header"><button onClick={()=>setShowPopUp(true)}>{loginLabel}</button></header>
+    <header className="header"><button className="logButton" onClick={()=>setShowPopUp(true)}>{loginLabel}</button></header>
     <aside className="sidebar">Menu Lateral</aside>
     <main className="content">
     <PopUp showPopUp={showPopUp} closePopUp={()=>setShowPopUp(false)}>
             
             </PopUp>
       {TextBox()}
-      {PostBox("p1", "gosto de jujubas")}
-      <div className="post">Post 2</div>
+      {PostBox("JUJUBA", "gosto de jujubas")}
+      {PostBox("Frutas", "prefiro chocolate")}
       <div className="post">Post 3</div>
       <div className="post">Post 4</div>
     </main>

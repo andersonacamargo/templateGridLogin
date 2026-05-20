@@ -1,5 +1,3 @@
-import like from "./like.svg";
-import logo from "./logo.svg";
 import { BiLike, BiDislike } from "react-icons/bi";
 import "./postbox.css"
 import { useState } from "react";
@@ -14,7 +12,8 @@ function PostBox(title, text){
             <p>{text}</p>
             </div>
          <footer> 
-            <p><BiLike className="btnLike" onClick={() => setCountLike(countLike + 1)}/> 
+            <p>  
+            <BiLike className="btnLike" onClick={() => setCountLike(countLike + 1)}/> 
             {countLike} 
             <BiDislike className="btnLike"  onClick={() => setCountDislike(countDislike + 1)}/>
             {countDislike} 

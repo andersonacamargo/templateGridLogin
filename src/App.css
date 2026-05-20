@@ -14,7 +14,12 @@
 }
 
 /* Posicionando os elementos */
-.header { grid-area: header; background-color: #f1c40f; }
+.header { 
+  grid-area: header; 
+  background-color: #f1c40f; 
+  text-align: right;
+  padding: 20px;
+}
 .sidebar { grid-area: sidebar; background-color: #3498db; }
 .content { 
   grid-area: main; 
@@ -36,25 +41,10 @@
 
 }
 
-.PopUp{
-  position: fixed;
-
-  left: 30%;
-  top: 10%;
-
-  width: 40%;
-
-  border: 2px solid black;
-  border-radius: 1em;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  background-color: white;
-
-}
-
-.inputPopup{
-  width: 300px;
+.logButton{
+  border-radius: 15px;
+  width: 80px;
+  height: 30px;
+  background-color: transparent;
+  border: 2px solid #f1A40f;
 }
