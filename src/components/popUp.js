@@ -5,22 +5,22 @@ import axios from "axios";
 
 function PopUp({showPopUp, closePopUp}){
   
-  const [logar, setLogar] = useState(false);
-
   const postLogin = async () => {
   try{
-    const res =  await axios.post('http://localhost:5000/registrar',{ 
-      nome:'anderson',
-      email:'test@tsest',
+    const response =  await axios.post('http://localhost:5000/login',{ 
+      email:'test@test',
       senha:'12345',
-      cargo:'prof'
     },{
-      headers: {
-          'content-type': 'text/json'
-      }
   })
-    console.log(res.status);
-    return res} 
+    console.log(response);
+
+    if (response.data.token) {
+      console.log(response.data.token);
+
+      localStorage.setItem('jwtToken', response.data.token); 
+    }
+    closePopUp()
+  } 
     catch (e){return null }
   }
 
