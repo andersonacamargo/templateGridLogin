@@ -4,6 +4,7 @@ import PostBox from './postbox.js';
 import { useEffect, useState } from 'react';
 import PopUp from './popUp.js';
 import { jwtDecode } from "jwt-decode";
+import Registrar from './register.js';
 
 function HomePage() {
   const [loginLabel, setLoginLabel] = useState("Login");
@@ -24,6 +25,7 @@ function HomePage() {
     <PopUp showPopUp={showPopUp} closePopUp={()=>setShowPopUp(false)}>
             
             </PopUp>
+      {Registrar()}
       {TextBox()}
       {PostBox("JUJUBA", user)}
       {PostBox("Frutas", "prefiro chocolate")}
