@@ -2,7 +2,7 @@ import { BiLike, BiDislike } from "react-icons/bi";
 import "./postbox.css"
 import { useState } from "react";
 
-function PostBox(title, text){
+function PostBox(title, text, auth){
     const [countLike, setCountLike] = useState(0);
     const [countDislike, setCountDislike] = useState(0);
 
@@ -13,9 +13,9 @@ function PostBox(title, text){
             </div>
          <footer> 
             <p>  
-            <BiLike className="btnLike" onClick={() => setCountLike(countLike + 1)}/> 
+            <BiLike className="btnLike" onClick={() => {if (auth){setCountLike(countLike + 1)}}}/>
             {countLike} 
-            <BiDislike className="btnLike"  onClick={() => setCountDislike(countDislike + 1)}/>
+            <BiDislike className="btnLike"  onClick={() => {if (auth){setCountDislike(countDislike + 1)}}}/>
             {countDislike} 
             </p>
          </footer>
