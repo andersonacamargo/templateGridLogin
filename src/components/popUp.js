@@ -4,12 +4,24 @@ import axios from "axios";
 
 
 function PopUp({showPopUp, closePopUp}){
-  
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+
+  const manipularSenha = (e) =>{
+    setSenha(e.target.value) 
+    console.log(senha)
+  }
+
+  const manipularEmail = (e) => { //nameHandler
+        setEmail(e.target.value);
+        console.log(email)
+    };
+
   const postLogin = async () => {
   try{
     const response =  await axios.post('http://localhost:5000/login',{ 
-      email:'test@test',
-      senha:'12345',
+      email:email,
+      senha:senha,
     },{
   })
     console.log(response);
@@ -29,9 +41,9 @@ function PopUp({showPopUp, closePopUp}){
   return (
     <div className="PopUp" >
         <label>Login:</label>
-        <input className='inputPopup' placeholder='login'></input>
+        <input className='inputPopup' onChange={manipularEmail} placeholder='login'></input>
         <label>Senha:</label>
-        <input className='inputPopup' placeholder='senha'></input>
+        <input className='inputPopup' onChange={manipularSenha} placeholder='senha'></input>
         <div className="buttonLine">
         <button className='login' onClick={() => postLogin()}>Logar</button>
         <button className='close' onClick={closePopUp}>Cancelar</button>

@@ -1,31 +1,40 @@
 import './main.css';
-import TextBox from "./textbox.js";
-import PostBox from './postbox.js';
+import TextBox from "../components/textbox.js";
+import PostBox from '../components/postbox.js';
 import { useEffect, useState } from 'react';
-import PopUp from './popUp.js';
+import {Link} from 'react-router-dom';
+import PopUp from '../components/popUp.js';
 import { jwtDecode } from "jwt-decode";
-import Registrar from './register.js';
+import MyHeader from "../components/header.js"
 
 function HomePage() {
   const [loginLabel, setLoginLabel] = useState("Login");
   const [showPopUp, setShowPopUp] = useState(false);  
   const token = localStorage.getItem('jwtToken'); //
   const [user, setUser] = useState('');
- 
-     //setUser(jwtDecode(token));
+  const [fakeToken, setFakeToken] = useState(false);
+
+  const manipularLoginButton = (e) =>{
+   setShowPopUp(true)
+   setFakeToken(true)
+  }
 
   return (
     <div className="grid-container">
     <header className="header">
-      
-      <button className="logButton" onClick={() => {setShowPopUp(true)} } >{loginLabel}</button>
+        <MyHeader logedin={fakeToken}
+          logout={() => setFakeToken(false)}
+          login={manipularLoginButton}></MyHeader>
+
+    {/* <Link to='/registrar'>Cadastrar</Link>
+    <button className="logButton" onClick={() => {setShowPopUp(true)} } >{loginLabel}</button> */}
       </header>
     <aside className="sidebar">Menu Lateral</aside>
     <main className="content">
     <PopUp showPopUp={showPopUp} closePopUp={()=>setShowPopUp(false)}>
             
             </PopUp>
-      {Registrar()}
+ 
       {TextBox()}
       {PostBox("JUJUBA", user)}
       {PostBox("Frutas", "prefiro chocolate")}
