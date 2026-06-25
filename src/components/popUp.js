@@ -26,10 +26,10 @@ function PopUp({showPopUp, closePopUp}){
   })
     console.log(response);
 
-    if (response.data.token) {
-      console.log(response.data.token);
+    if (response.data.nome) {
+      console.log(response.data.nome);
 
-      localStorage.setItem('jwtToken', response.data.token); 
+      localStorage.setItem('nome', response.data.nome); 
     }
     closePopUp()
   } 

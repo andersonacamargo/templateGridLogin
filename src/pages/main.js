@@ -13,11 +13,14 @@ function HomePage() {
   const token = localStorage.getItem('jwtToken'); //
   const [user, setUser] = useState('');
   const [fakeToken, setFakeToken] = useState(false);
-
+  const [menuUser, setMenuUser] = useState({})
+  const value = localStorage.getItem("nome");
   const manipularLoginButton = (e) =>{
    setShowPopUp(true)
    setFakeToken(true)
   }
+
+  if (!value){
 
   return (
     <div className="grid-container">
@@ -25,9 +28,6 @@ function HomePage() {
         <MyHeader logedin={fakeToken}
           logout={() => setFakeToken(false)}
           login={manipularLoginButton}></MyHeader>
-
-    {/* <Link to='/registrar'>Cadastrar</Link>
-    <button className="logButton" onClick={() => {setShowPopUp(true)} } >{loginLabel}</button> */}
       </header>
     <aside className="sidebar">Menu Lateral</aside>
     <main className="content">
@@ -38,11 +38,31 @@ function HomePage() {
       {TextBox()}
       {PostBox("JUJUBA", user)}
       {PostBox("Frutas", "prefiro chocolate")}
-      <div className="post">Post 3</div>
-      <div className="post">Post 4</div>
+    
     </main>
   </div>
   );
 }
 
+return (
+  <div className="grid-container">
+  <header className="header">
+      <MyHeader logedin={fakeToken}
+        logout={() => setFakeToken(false)}
+        login={manipularLoginButton}></MyHeader>
+    </header>
+  <aside className="sidebar">{value}</aside>
+  <main className="content">
+  <PopUp showPopUp={showPopUp} closePopUp={()=>setShowPopUp(false)}>
+          
+          </PopUp>
+
+    {TextBox()}
+    {PostBox(0)}
+    {PostBox(1)}
+  
+  </main>
+</div>
+);
+}
 export default HomePage;
