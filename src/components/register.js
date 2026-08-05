@@ -26,7 +26,7 @@ function Registrar() {
     const manipularBotao = async () => {
         try {
             const response = await
-                axios.post('https://templateexpresslogin-1.onrender.com', {
+                axios.post('https://templateexpresslogin-1.onrender.com/registrar', {
                     nome: nome,
                     email: email,
                     senha: senha,
